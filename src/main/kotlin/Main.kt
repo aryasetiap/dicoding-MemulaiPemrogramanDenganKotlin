@@ -1,37 +1,35 @@
 package com.dicoding.kotlin
 
 fun main() {
-    // Anatomi Function :
-
-    // Function Header
-    // Visibility Modifier: public (default)
-    fun greet(name: String): String {
-        // Function Body
-        return "Hello, $name!"
-    }
-    print(greet("Arya"))
-
     /*
-    1. Function Header:
-    Bagian ini mencakup visibility modifier, kata kunci fun, nama fungsi, daftar parameter,
-    dan nilai kembalian dari fungsi tersebut.
+    Named dan Default Argument dalam pemrograman Kotlin.
 
-    2. Visibility Modifier:
-    Secara default, fungsi ini memiliki visibility modifier public, yang berarti dapat diakses dari luar kelas.
+    1. Named Argument:
+    Kotlin memungkinkan kita untuk menentukan argumen dari parameter mana
+    yang ingin dilampirkan dengan memanggil nama dari parameter tersebut.
+    Ini membantu menghindari kesalahan dalam menghafal posisi parameter saat memanggil fungsi.
 
-    3. Function Name:
-    Nama fungsi menggunakan format camelCase, dimulai dengan huruf kecil dan huruf besar untuk kata berikutnya.
+    2. Default Argument:
+    Kotlin juga memungkinkan kita untuk menentukan nilai default dari sebuah parameter.
+    Jika argumen tidak dilampirkan, nilai default tersebut akan digunakan.
+    Ini membantu menghindari kesalahan dan membuat kode lebih mudah dibaca.
 
-    4. Function Parameter:
-    Data atau nilai yang disematkan saat fungsi dipanggil.
-    Parameter terdiri dari nama dan tipe, dan dipisahkan oleh tanda koma.
-
-    5. Function Return Type:
-    Menentukan nilai yang akan dikembalikan oleh fungsi.
-    Jika tidak ditentukan, fungsi akan mengembalikan nilai dengan tipe Unit.
-
-    6. Function Body:
-    Ditandai dengan curly braces {} dan berisi logika kode.
-    Dalam hal ini, fungsi mengembalikan string yang berisi pesan sapaan.
+    Dengan memanfaatkan named dan default argument, kode yang kita tulis menjadi lebih mudah dibaca
+    dan membantu dalam menggunakan fungsi yang kompleks.
     */
+
+    // Named Argument
+    fun getFullName(first: String, middle: String, last: String): String {
+        return "$first $middle $last"
+    }
+    println(getFullName(first = "Arya", middle = "Setia", last = "Pratama"))
+
+    // Default Argument
+    fun getFullName2(
+        first: String = "Kotlin",
+        middle: String = " is ",
+        last: String = "Awesome"): String {
+        return "$first $middle $last"
+    }
+    println(getFullName2())
 }
