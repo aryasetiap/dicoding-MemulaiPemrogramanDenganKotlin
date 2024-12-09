@@ -1,23 +1,22 @@
 package com.dicoding.kotlin
 
 fun main() {
-    // Nullable Types dalam pemrograman Kotlin.
-    // NullPointerException (NPE) adalah kesalahan yang terjadi saat mencoba mengakses atau mengelola nilai
-    // dari variabel yang belum diinisialisasi atau bernilai null. Kotlin memudahkan pengelolaan variabel nullable
-    // untuk meminimalisasi terjadinya NPE.
-    // Kotlin membedakan objek yang boleh bernilai null dan yang tidak boleh bernilai null saat objek tersebut dibuat.
-    // Jika objek bisa bernilai null, kita bisa menambahkan tanda ? setelah tipe objek tersebut.
-    // Namun, kita tidak bisa langsung mengakses atau mengelola nilai dari objek nullable tanpa pemeriksaan null
-    // atau menggunakan fitur seperti Safe Calls dan Elvis Operator.
+    /*
+    Safe Calls dan Elvis Operator dalam pemrograman Kotlin.
+    Safe Calls (?.) digunakan untuk mengakses atau mengelola nilai dari objek nullable dengan aman,
+    sehingga mencegah terjadinya NullPointerException. Jika objek bernilai null, proses akan dilewatkan.
+    */
+    val text: String? = null
+    text?.length // ini akan dilewati karena text bernilai Null Pointer Exception (NPE)
 
-    var obj: String? = null
+    /*
+    Elvis Operator (?:) memungkinkan kita untuk menetapkan nilai default jika objek bernilai null.
+    Operator ini membantu menulis kode yang lebih aman dan mudah dibaca.
+    */
+    // akan mengembalikan nilai text.length jika text tidak bernilai null
+    // jika null maka akan mengembalikan nilai defaultnya yaitu 7
+    val textLength = text?.length ?: 7
 
-    // mengelola nullable
-    if(obj is String) {
-        // Tidak membutuhkan casting secara eksplisit.
-        println("String length is ${obj.length}")
-    }
+    println(textLength)
 
-    obj = "Bola Panas"
-    println(obj)
 }
