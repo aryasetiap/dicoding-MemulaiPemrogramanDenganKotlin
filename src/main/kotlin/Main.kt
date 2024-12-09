@@ -1,35 +1,23 @@
 package com.dicoding.kotlin
 
 fun main() {
-    /*
-    Arrays dalam pemrograman Kotlin.
-    Array adalah tipe data yang memungkinkan kita untuk menyimpan beberapa objek di dalam satu variabel.
-    Kotlin menggunakan kelas Array yang memiliki fungsi get dan set serta properti size.
-    Untuk membuat Array, kita bisa menggunakan fungsi arrayOf().
-    */
+    // Nullable Types dalam pemrograman Kotlin.
+    // NullPointerException (NPE) adalah kesalahan yang terjadi saat mencoba mengakses atau mengelola nilai
+    // dari variabel yang belum diinisialisasi atau bernilai null. Kotlin memudahkan pengelolaan variabel nullable
+    // untuk meminimalisasi terjadinya NPE.
+    // Kotlin membedakan objek yang boleh bernilai null dan yang tidak boleh bernilai null saat objek tersebut dibuat.
+    // Jika objek bisa bernilai null, kita bisa menambahkan tanda ? setelah tipe objek tersebut.
+    // Namun, kita tidak bisa langsung mengakses atau mengelola nilai dari objek nullable tanpa pemeriksaan null
+    // atau menggunakan fitur seperti Safe Calls dan Elvis Operator.
 
-    val numbers = arrayOf(1, 3, 5, 7)
-    val mixArray = arrayOf(1, 3, 5, 7 , "Dicoding" , true)
+    var obj: String? = null
 
-    println("Array 1 :")
-    for (number in numbers) {
-        println(number)
-    }
-    println()
-
-    println("Array 2:")
-    for (value in mixArray) {
-        println(value)
+    // mengelola nullable
+    if(obj is String) {
+        // Tidak membutuhkan casting secara eksplisit.
+        println("String length is ${obj.length}")
     }
 
-    /*
-    Kotlin juga memungkinkan kita untuk membuat Array dengan tipe data primitif dengan memanfaatkan beberapa fungsi spesifik berikut:
-    intArrayOf() : IntArray
-    booleanArrayOf() : BooleanArray
-    charArrayOf() : CharArray
-    longArrayOf() : LongArray
-    shortArrayOf() : ShortArray
-    byteArrayOf() : ByteArray
-    */
-
+    obj = "Bola Panas"
+    println(obj)
 }
