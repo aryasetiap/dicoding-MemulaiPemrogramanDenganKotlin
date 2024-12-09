@@ -1,23 +1,37 @@
 package com.dicoding.kotlin
 
 fun main() {
-    /*
-    Functions dalam pemrograman Kotlin. Fungsi adalah prosedur yang memiliki keterkaitan dengan pesan dan objek.
-    Ketika kita memanggil sebuah fungsi, sebuah mini-program akan dijalankan.
-    Fungsi digunakan untuk mengatur program dan dapat mengembalikan nilai.
-    Deklarasi fungsi di Kotlin diawali dengan kata kunci fun, diikuti dengan nama fungsi, parameter, dan tipe kembalian.
-    Fungsi dapat memiliki satu atau lebih parameter yang dipisahkan oleh koma dan berada di dalam tanda kurung.
-    Tipe kembalian adalah nilai yang akan dikembalikan ketika fungsi dipanggil. Jika fungsi hanya memiliki satu expression,
-    maka dapat menggunakan expression body dengan tanda =.
-    Jika fungsi tidak mengembalikan nilai, dapat menggunakan Unit sebagai tipe kembalian.
-    */
+    // Anatomi Function :
 
-    fun setUser(name: String, age: Int): String {
-        return "Your name is $name, and you $age years old"
+    // Function Header
+    // Visibility Modifier: public (default)
+    fun greet(name: String): String {
+        // Function Body
+        return "Hello, $name!"
     }
+    print(greet("Arya"))
 
-    fun setUserEB(name: String, age: Int): String = "Your name is $name, and you $age years old"
+    /*
+    1. Function Header:
+    Bagian ini mencakup visibility modifier, kata kunci fun, nama fungsi, daftar parameter,
+    dan nilai kembalian dari fungsi tersebut.
 
-    println(setUser("Arya", 20))
-    println(setUserEB("Bela", 21))
+    2. Visibility Modifier:
+    Secara default, fungsi ini memiliki visibility modifier public, yang berarti dapat diakses dari luar kelas.
+
+    3. Function Name:
+    Nama fungsi menggunakan format camelCase, dimulai dengan huruf kecil dan huruf besar untuk kata berikutnya.
+
+    4. Function Parameter:
+    Data atau nilai yang disematkan saat fungsi dipanggil.
+    Parameter terdiri dari nama dan tipe, dan dipisahkan oleh tanda koma.
+
+    5. Function Return Type:
+    Menentukan nilai yang akan dikembalikan oleh fungsi.
+    Jika tidak ditentukan, fungsi akan mengembalikan nilai dengan tipe Unit.
+
+    6. Function Body:
+    Ditandai dengan curly braces {} dan berisi logika kode.
+    Dalam hal ini, fungsi mengembalikan string yang berisi pesan sapaan.
+    */
 }
