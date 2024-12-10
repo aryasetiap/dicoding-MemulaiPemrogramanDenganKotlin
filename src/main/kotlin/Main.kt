@@ -1,28 +1,25 @@
 package com.dicoding.kotlin
 
+import kotlin.random.Random
+
 fun main() {
     /*
-    Expressions dan Statements dalam pemrograman Kotlin.
-    1. Expressions:
-    Merupakan statement yang dapat mengembalikan nilai dan bisa disimpan ke dalam sebuah variabel.
-    Contohnya adalah penggunaan if sebagai expression yang mengembalikan nilai ke variabel berdasarkan kondisi tertentu.
-    2. Statements:
-    Merupakan instruksi yang tidak mengembalikan nilai apapun, hanya sebagai percabangan atau perintah dalam kode.
-    Contohnya adalah deklarasi variabel atau penggunaan if sebagai statement.
+    When Expressions dalam pemrograman Kotlin. When expressions digunakan sebagai alternatif dari if-else if yang lebih
+    sederhana dan lebih mudah dibaca. When expression memungkinkan kita untuk mencocokkan nilai dari sebuah variabel
+    atau expression dengan beberapa kondisi secara berurutan sampai salah satu kondisi terpenuhi. Kita juga bisa
+    menambahkan branch else yang akan dievaluasi jika tidak ada kondisi yang terpenuhi. When expression dapat
+    mengembalikan nilai dan dapat disimpan dalam sebuah variabel. Selain itu, when expression juga bisa digunakan untuk
+    memeriksa instance dengan tipe tertentu dari sebuah objek menggunakan is atau !is, serta memeriksa nilai yang
+    terdapat pada sebuah Range atau Collection.
     */
 
-    val now = 9
-    val openOffice = 8
-
-//    Expressions
-    if (now > openOffice) {
-        println("Office already open")
-    } else {
-        println("Office close")
+    val registerNumber = when(val regis = getRegisterNumber()){
+        in 1..50 -> 50 * regis
+        in 51..100 -> 100 * regis
+        else -> regis
     }
 
-//    Statement
-    fun sum(value1: Int, value2: Int) = value1 + value2
-    var jumlahkan = sum(1,2)
-    println(jumlahkan)
+    println(registerNumber)
 }
+
+fun getRegisterNumber() = Random.nextInt(100)
