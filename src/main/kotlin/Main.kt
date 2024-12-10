@@ -2,21 +2,27 @@ package com.dicoding.kotlin
 
 fun main() {
     /*
-    Control Flow dalam pemrograman Kotlin.
-
-    Control flow adalah cara kita mengontrol alur dari sebuah program berdasarkan kondisi saat program tersebut berjalan.
-    Beberapa bagian dari control flow yang dibahas meliputi:
-    1. When Expression:
-        Digunakan sebagai alternatif dari if-else if yang lebih sederhana dan lebih mudah dibaca.
-    2. Expression & Statement:
-        Menjelaskan perbedaan antara expression yang mengembalikan nilai dan statement yang tidak mengembalikan nilai.
-    3. While dan Do While:
-        Loop yang digunakan untuk menjalankan blok kode selama kondisi tertentu terpenuhi.
-    4. Range dan For Loop:
-        Digunakan untuk mengiterasi melalui rentang nilai atau koleksi.
-    5. Break dan Continue:
-        Digunakan untuk mengontrol alur eksekusi loop.
-    6. Labels:
-        Digunakan untuk memberikan label pada loop atau blok kode tertentu untuk mengontrol alur eksekusi.
+    Expressions dan Statements dalam pemrograman Kotlin.
+    1. Expressions:
+    Merupakan statement yang dapat mengembalikan nilai dan bisa disimpan ke dalam sebuah variabel.
+    Contohnya adalah penggunaan if sebagai expression yang mengembalikan nilai ke variabel berdasarkan kondisi tertentu.
+    2. Statements:
+    Merupakan instruksi yang tidak mengembalikan nilai apapun, hanya sebagai percabangan atau perintah dalam kode.
+    Contohnya adalah deklarasi variabel atau penggunaan if sebagai statement.
     */
+
+    val now = 9
+    val openOffice = 8
+
+//    Expressions
+    if (now > openOffice) {
+        println("Office already open")
+    } else {
+        println("Office close")
+    }
+
+//    Statement
+    fun sum(value1: Int, value2: Int) = value1 + value2
+    var jumlahkan = sum(1,2)
+    println(jumlahkan)
 }
