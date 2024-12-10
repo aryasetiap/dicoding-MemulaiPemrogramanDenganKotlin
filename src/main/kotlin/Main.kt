@@ -2,18 +2,17 @@ package com.dicoding.kotlin
 
 fun main() {
     /*
-    Range dalam pemrograman Kotlin.
+    For Loop dalam pemrograman Kotlin.
 
-    Range adalah tipe data unik yang memungkinkan kita menentukan nilai awal dan nilai akhir. Range direpresentasikan
-    dengan operator .., fungsi rangeTo(), atau downTo(). Kita bisa menentukan jarak antara dua nilai yang dicakup oleh
-    Range menggunakan properti step. Kotlin mendukung beberapa tipe integral seperti IntRange, LongRange, dan CharRange,
-    sehingga kita bisa menggunakan nilai numerik maupun karakter dalam Range. Selain itu, kita juga bisa memeriksa
-    apakah suatu nilai ada atau tidak ada dalam cakupan Range menggunakan kata kunci in dan !in.
+    For loop digunakan untuk melakukan perulangan pada blok kode selama kondisi yang diberikan terpenuhi atau
+    bernilai true. For loop dapat digunakan pada Ranges, Collections, Arrays, dan apa pun yang menyediakan iterator.
+    Selain itu, kita juga dapat menggunakan ekstensi step untuk mengatur jarak nilai dalam perulangan, serta fungsi
+    withIndex() untuk mengakses indeks setiap elemen dalam Ranges. Kotlin juga menyediakan ekstensi forEach untuk
+    melakukan perulangan pada setiap item dari variabel tanpa perlu menggunakan kata kunci for secara terpisah.
     */
 
-    val rangeInt = 1..10 step 2
-    rangeInt.forEach {
-        print("$it ")
+    val ranges = 1.rangeTo(10) step 3
+    for (i in ranges ){
+        println("value is $i!")
     }
-    println(rangeInt.step)
 }
