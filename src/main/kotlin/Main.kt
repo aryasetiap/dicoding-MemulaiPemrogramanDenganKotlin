@@ -2,28 +2,21 @@ package com.dicoding.kotlin
 
 fun main() {
     /*
-    Vararg (Variable Argument) dalam pemrograman Kotlin.
+    Control Flow dalam pemrograman Kotlin.
 
-    Vararg memungkinkan kita untuk menyederhanakan beberapa parameter yang memiliki tipe data yang sama menjadi
-    parameter tunggal dengan menggunakan kata kunci vararg. Dengan vararg, sebuah fungsi dapat memiliki jumlah parameter
-    yang bervariasi berdasarkan jumlah argumen yang dimasukkan saat fungsi tersebut dipanggil.
-
-    Beberapa aturan penting dalam penggunaan vararg:
-    1. Tidak diizinkan memiliki dua parameter bertanda vararg dalam satu fungsi.
-    2. Parameter bertanda vararg sebaiknya berada pada posisi terakhir jika ada parameter lain tanpa kata kunci vararg.
-    3. Jika parameter vararg ditempatkan di posisi pertama, kita harus menggunakan named argument untuk parameter lainnya.
-
-    Vararg berbeda dengan Array karena kita bisa memasukkan argumen satu per satu, dan kita juga bisa menggunakan
-    spread operator (*) untuk memasukkan nilai yang sudah berbentuk Array sebagai argumen untuk parameter vararg.
+    Control flow adalah cara kita mengontrol alur dari sebuah program berdasarkan kondisi saat program tersebut berjalan.
+    Beberapa bagian dari control flow yang dibahas meliputi:
+    1. When Expression:
+        Digunakan sebagai alternatif dari if-else if yang lebih sederhana dan lebih mudah dibaca.
+    2. Expression & Statement:
+        Menjelaskan perbedaan antara expression yang mengembalikan nilai dan statement yang tidak mengembalikan nilai.
+    3. While dan Do While:
+        Loop yang digunakan untuk menjalankan blok kode selama kondisi tertentu terpenuhi.
+    4. Range dan For Loop:
+        Digunakan untuk mengiterasi melalui rentang nilai atau koleksi.
+    5. Break dan Continue:
+        Digunakan untuk mengontrol alur eksekusi loop.
+    6. Labels:
+        Digunakan untuk memberikan label pada loop atau blok kode tertentu untuk mengontrol alur eksekusi.
     */
-
-    fun sumNumbers(vararg number: Int): Int {
-        return number.sum()
-    }
-    println(sumNumbers(1,2,3,4,5,6))
-
-    fun getNumberSize(vararg number:Int): Int {
-        return number.size
-    }
-    println(getNumberSize(1,2,3,4))
 }
