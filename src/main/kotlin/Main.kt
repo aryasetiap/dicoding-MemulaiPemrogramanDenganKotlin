@@ -2,34 +2,28 @@ package com.dicoding.kotlin
 
 fun main() {
     /*
-    Named dan Default Argument dalam pemrograman Kotlin.
+    Vararg (Variable Argument) dalam pemrograman Kotlin.
 
-    1. Named Argument:
-    Kotlin memungkinkan kita untuk menentukan argumen dari parameter mana
-    yang ingin dilampirkan dengan memanggil nama dari parameter tersebut.
-    Ini membantu menghindari kesalahan dalam menghafal posisi parameter saat memanggil fungsi.
+    Vararg memungkinkan kita untuk menyederhanakan beberapa parameter yang memiliki tipe data yang sama menjadi
+    parameter tunggal dengan menggunakan kata kunci vararg. Dengan vararg, sebuah fungsi dapat memiliki jumlah parameter
+    yang bervariasi berdasarkan jumlah argumen yang dimasukkan saat fungsi tersebut dipanggil.
 
-    2. Default Argument:
-    Kotlin juga memungkinkan kita untuk menentukan nilai default dari sebuah parameter.
-    Jika argumen tidak dilampirkan, nilai default tersebut akan digunakan.
-    Ini membantu menghindari kesalahan dan membuat kode lebih mudah dibaca.
+    Beberapa aturan penting dalam penggunaan vararg:
+    1. Tidak diizinkan memiliki dua parameter bertanda vararg dalam satu fungsi.
+    2. Parameter bertanda vararg sebaiknya berada pada posisi terakhir jika ada parameter lain tanpa kata kunci vararg.
+    3. Jika parameter vararg ditempatkan di posisi pertama, kita harus menggunakan named argument untuk parameter lainnya.
 
-    Dengan memanfaatkan named dan default argument, kode yang kita tulis menjadi lebih mudah dibaca
-    dan membantu dalam menggunakan fungsi yang kompleks.
+    Vararg berbeda dengan Array karena kita bisa memasukkan argumen satu per satu, dan kita juga bisa menggunakan
+    spread operator (*) untuk memasukkan nilai yang sudah berbentuk Array sebagai argumen untuk parameter vararg.
     */
 
-    // Named Argument
-    fun getFullName(first: String, middle: String, last: String): String {
-        return "$first $middle $last"
+    fun sumNumbers(vararg number: Int): Int {
+        return number.sum()
     }
-    println(getFullName(first = "Arya", middle = "Setia", last = "Pratama"))
+    println(sumNumbers(1,2,3,4,5,6))
 
-    // Default Argument
-    fun getFullName2(
-        first: String = "Kotlin",
-        middle: String = " is ",
-        last: String = "Awesome"): String {
-        return "$first $middle $last"
+    fun getNumberSize(vararg number:Int): Int {
+        return number.size
     }
-    println(getFullName2())
+    println(getNumberSize(1,2,3,4))
 }
