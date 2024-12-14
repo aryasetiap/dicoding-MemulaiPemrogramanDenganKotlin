@@ -2,20 +2,25 @@ package com.dicoding.kotlin
 
 fun main() {
     /*
-    konsep Object-Oriented Programming (OOP) dalam bahasa pemrograman Kotlin.
-    OOP adalah paradigma pemrograman yang banyak digunakan dalam pengembangan aplikasi karena kemampuannya untuk
-    memvisualisasikan kode seperti skenario kehidupan nyata. Ada empat pilar utama dalam OOP:
+    "Object Everywhere" dalam pemrograman Kotlin.
 
-    1. Inheritance (Pewarisan):
-        Objek dapat mewarisi sifat atau perilaku dari objek lain, mirip dengan hubungan keluarga.
+    Dalam Kotlin, semua nilai, termasuk tipe primitif seperti String, Integer, Char, dan Boolean, dianggap sebagai objek.
+    Ini memungkinkan kita untuk memanggil fungsi dan properti dari variabel-variabel tersebut. Objek adalah realisasi
+    dari blueprint atau class, yang memiliki fungsi dan properti yang sama dengan blueprint-nya. Dengan membuat objek,
+    kita dapat mengakses berbagai fungsi dan properti yang terdapat pada kelas tersebut, seperti fungsi reverse(),
+    toUpperCase(), dan toLowerCase() pada objek String.
+     */
 
-    2. Encapsulation (Enkapsulasi):
-        Mengumpulkan data dan metode yang berhubungan ke dalam sebuah objek dan mengisolasi data tersebut agar tidak dapat diakses langsung dari luar.
+    val someString = "Dicoding"
+    println(someString.reversed())
+    println(someString.uppercase())
+    println(someString.lowercase())
 
-    3. Abstraction (Abstraksi):
-        Menghilangkan kompleksitas dan detail yang tidak perlu dari suatu objek, hanya menampilkan informasi penting saja.
+    val someString1 = "123"
+    val someInt = someString1.toInt()
+    val someOtherString = "12.34"
+    val someDouble = someOtherString.toDouble()
 
-    4. Polymorphism (Polimorfisme):
-        Memungkinkan objek dengan tipe yang berbeda untuk diproses dengan cara yang serupa, tergantung pada objek yang memanggilnya.
-    */
+    println(someInt is Int)
+    println(someDouble is Double)
 }
