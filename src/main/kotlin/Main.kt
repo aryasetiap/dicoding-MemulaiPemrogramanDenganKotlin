@@ -2,25 +2,12 @@ package com.dicoding.kotlin
 
 fun main() {
     /*
-    "Object Everywhere" dalam pemrograman Kotlin.
+    Konsep class dalam pemrograman Kotlin.
 
-    Dalam Kotlin, semua nilai, termasuk tipe primitif seperti String, Integer, Char, dan Boolean, dianggap sebagai objek.
-    Ini memungkinkan kita untuk memanggil fungsi dan properti dari variabel-variabel tersebut. Objek adalah realisasi
-    dari blueprint atau class, yang memiliki fungsi dan properti yang sama dengan blueprint-nya. Dengan membuat objek,
-    kita dapat mengakses berbagai fungsi dan properti yang terdapat pada kelas tersebut, seperti fungsi reverse(),
-    toUpperCase(), dan toLowerCase() pada objek String.
+    Class adalah blueprint yang mendefinisikan atribut (properties) dan perilaku
+    (methods) dari suatu objek. Misalnya, dalam class Kendaraan, atributnya bisa berupa roda, warna, dan nomor kendaraan,
+    sedangkan perilakunya bisa berupa maju, mundur, dan belok. Dalam Kotlin, properties adalah karakteristik dari sebuah
+    class yang memiliki tipe data tertentu, seperti String, Double, Int, dan Boolean. Methods adalah kemampuan atau aksi
+    dari sebuah class, seperti eat() dan sleep() dalam class Hewan.
      */
-
-    val someString = "Dicoding"
-    println(someString.reversed())
-    println(someString.uppercase())
-    println(someString.lowercase())
-
-    val someString1 = "123"
-    val someInt = someString1.toInt()
-    val someOtherString = "12.34"
-    val someDouble = someOtherString.toDouble()
-
-    println(someInt is Int)
-    println(someDouble is Double)
 }
