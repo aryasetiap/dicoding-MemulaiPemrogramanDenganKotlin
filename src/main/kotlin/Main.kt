@@ -2,45 +2,20 @@ package com.dicoding.kotlin
 
 fun main() {
     /*
-    Break dan Continue dalam pemrograman Kotlin.
-    1. Continue: Digunakan untuk melewatkan proses iterasi saat kondisi tertentu terpenuhi dan melanjutkan ke iterasi
-    berikutnya. Ini berguna ketika kita ingin melewati nilai yang tidak sesuai harapan tanpa menghentikan seluruh proses perulangan.
+    konsep Object-Oriented Programming (OOP) dalam bahasa pemrograman Kotlin.
+    OOP adalah paradigma pemrograman yang banyak digunakan dalam pengembangan aplikasi karena kemampuannya untuk
+    memvisualisasikan kode seperti skenario kehidupan nyata. Ada empat pilar utama dalam OOP:
 
-    2. Break: Digunakan untuk menghentikan proses iterasi saat kondisi tertentu terpenuhi. Ini berguna ketika kita ingin
-    menghentikan seluruh proses perulangan jika nilai yang dihasilkan tidak sesuai harapan.
+    1. Inheritance (Pewarisan):
+        Objek dapat mewarisi sifat atau perilaku dari objek lain, mirip dengan hubungan keluarga.
 
-    3. Labels: Kotlin memungkinkan kita untuk memberikan label pada loop atau blok kode tertentu. Label ini membantu
-    mengontrol alur eksekusi loop, terutama ketika menggunakan break atau continue dalam nested loop.
+    2. Encapsulation (Enkapsulasi):
+        Mengumpulkan data dan metode yang berhubungan ke dalam sebuah objek dan mengisolasi data tersebut agar tidak dapat diakses langsung dari luar.
+
+    3. Abstraction (Abstraksi):
+        Menghilangkan kompleksitas dan detail yang tidak perlu dari suatu objek, hanya menampilkan informasi penting saja.
+
+    4. Polymorphism (Polimorfisme):
+        Memungkinkan objek dengan tipe yang berbeda untuk diproses dengan cara yang serupa, tergantung pada objek yang memanggilnya.
     */
-
-    val listOfInt = listOf(1, 2, 3, null, 5, null, 7)
-
-//    Continue
-    println("Continue")
-    for (i in listOfInt) {
-        if (i == null) continue
-        print(i)
-    }
-    println()
-
-//    Break
-    println("Break")
-    for (i in listOfInt) {
-        if (i == null) break
-        print(i)
-    }
-    println()
-
-
-//    Break dan Continue Labels
-    println("Break dan Continue Labels")
-    loop@ for (i in 1..10) {
-        println("Outside Loop")
-
-        for (j in 1..10) {
-            println("Inside Loop")
-            if ( j > 5) break@loop // akan keluar dari loop luar
-        }
-    }
-    println()
 }
