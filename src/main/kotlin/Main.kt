@@ -1,43 +1,43 @@
 package com.dicoding.kotlin
 
-class Animal(val name: String, val weight: Double, val age: Int, val isMammal: Boolean)
-// dengan nilai default
-// class Animal(var name: String, var weight: Double, var age: Int = 0, var isMammal: Boolean = true)
-
-// init block : untuk melakukan verivikasi terhadap nilai properti
-class Animal2(name: String, weight: Double, age: Int, isMammal: Boolean){
+class Animal(name: String, weight: Double, age: Int) {
     val name: String
     val weight: Double
     val age: Int
-    val isMammal: Boolean
+    var isMammal: Boolean
 
     init {
         this.weight = if(weight < 0) 0.1 else weight
         this.age = if(age < 0) 0  else age
         this.name = name
+        this.isMammal = false
+    }
+
+    constructor(name: String, weight: Double, age: Int, isMammal: Boolean) : this(name, weight, age) {
         this.isMammal = isMammal
     }
 }
 
-fun main(){
+fun main() {
     /*
-    Primary Constructor dalam Kotlin:
+    Secondary Constructor dalam Kotlin:
 
-    Primary Constructor: Digunakan untuk menginisialisasi properti pada kelas saat objek dibuat. Properti dituliskan
-    pada header class dengan var atau val.
+    Secondary Constructor: Digunakan untuk menginisialisasi kelas dengan cara yang berbeda. Anda dapat membuat lebih
+    dari satu secondary constructor.
 
-    Nilai Default: Primary constructor dapat memiliki nilai default untuk properti, sehingga pengiriman nilai pada saat
-    pembuatan objek bersifat opsional.
-
-    Init Block: Kotlin menyediakan blok init untuk menginisialisasi properti di dalam body class dan memvalidasi nilai
-    properti sebelum diinisialisasi.
-
-    Keyword this: Digunakan untuk menghindari ambiguitas antara properti pada body class dan parameter pada head class.
+    Default Constructor: Kotlin secara otomatis membuat default constructor jika tidak ada konstruktor yang dibuat
+    secara manual. Default constructor akan menginisialisasi properti dengan nilai default.
     */
 
-    val dicodingCat = Animal("Dicoding Miaw", 4.2, 2, true)
-    println("Nama: ${dicodingCat.name}, Berat: ${dicodingCat.weight}, Umur: ${dicodingCat.age}, mamalia: ${dicodingCat.isMammal}" )
+    val dicodingCat = Animal("Dicoding Miaw", 2.5, 2, true)
+    println("Nama: ${dicodingCat.name}, Berat: ${dicodingCat.weight}, Umur: ${dicodingCat.age}, mamalia: ${dicodingCat.isMammal}")
 
-    val dicodingCat2 = Animal2("Dicoding Miaw", 4.2, 2, true)
-    println("Nama: ${dicodingCat2.name}, Berat: ${dicodingCat2.weight}, Umur: ${dicodingCat2.age}, mamalia: ${dicodingCat2.isMammal}" )
+    val dicodingBird = Animal("Dicoding tweet", 0.5, 1)
+    println("Nama: ${dicodingBird.name}, Berat: ${dicodingBird.weight}, Umur: ${dicodingBird.age}, mamalia: ${dicodingBird.isMammal}")
 }
+
+/*
+output:
+    Nama: Dicoding Miaw, Berat: 2.5, Umur: 2, mamalia: true
+    Nama: Dicoding tweet, Berat: 0.5, Umur: 1, mamalia: false
+*/
