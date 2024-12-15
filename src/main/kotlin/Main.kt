@@ -1,51 +1,41 @@
 package com.dicoding.kotlin
 
-// Contoh penggunaan interface dalam Kotlin
+// Contoh penggunaan extension functions dalam Kotlin
 
-// Mendefinisikan interface IFly
-interface IFly {
-    val numberOfWings: Int
-    fun fly()
+// Extension function untuk kelas Int
+fun Int.isEven(): Boolean {
+    return this % 2 == 0
 }
 
-// Kelas Bird mengimplementasikan interface IFly
-class Bird(override val numberOfWings: Int) : IFly {
-    override fun fly() {
-        println("Bird is flying with $numberOfWings wings.")
-    }
-}
-
-// Kelas Airplane mengimplementasikan interface IFly
-class Airplane(override val numberOfWings: Int) : IFly {
-    override fun fly() {
-        println("Airplane is flying with $numberOfWings wings.")
-    }
+// Extension function untuk kelas String
+fun String.greet(): String {
+    return "Hello, $this!"
 }
 
 fun main() {
-    val bird = Bird(2)
-    bird.fly()
+    // Menggunakan extension function isEven()
+    val number = 10
+    println("$number is even: ${number.isEven()}")
 
-    val airplane = Airplane(2)
-    airplane.fly()
+    // Menggunakan extension function greet()
+    val name = "Kotlin"
+    println(name.greet())
 }
 
 /*
-    Interfaces dalam Kotlin:
+    Extensions dalam Kotlin:
 
-    Konsep Interface: Interface adalah konsep yang digunakan oleh suatu kelas agar dapat memiliki sifat tertentu.
-        Interface mirip dengan abstract class, tetapi tanpa deklarasi properti dan fungsi yang dideklarasikan tanpa isi.
+    Extensions: Kotlin memungkinkan kita untuk menambahkan fungsi baru pada sebuah kelas tanpa harus mewarisi kelas
+        tersebut melalui deklarasi khusus yang disebut Extensions.
 
-    Implementasi Interface: Kelas yang mengimplementasikan sebuah interface harus melakukan override seluruh properti
-        dan fungsi yang terdapat pada interface tersebut.
+    Extension Functions: Digunakan untuk menambahkan fungsi baru pada kelas. Deklarasinya melibatkan receiver type dan
+        nama fungsi yang dipisahkan oleh titik (.). Contoh: fun Int.isEven(): Boolean { return this % 2 == 0 }.
 
-    Penamaan Interface: Penamaan interface biasanya diawali dengan huruf "I" kapital untuk membedakannya dengan kelas.
+    Extension Properties: Digunakan untuk menambahkan properti baru pada kelas tanpa menyentuh kode di dalam kelas
+        tersebut. Deklarasinya mirip dengan extension functions, tetapi harus menyediakan getter atau setter secara
+        eksplisit. Contoh: val String.firstChar: Char get() = this[0].
 
-        Perbedaan dengan Abstract Class:
-
-        Abstract class bisa berisi default value, sedangkan interface tidak bisa.
-
-        Setiap member abstract class final secara default, sedangkan member interface abstract secara default.
-
-        Satu kelas hanya bisa extend satu abstract class, tetapi bisa implement lebih dari satu interface.
+    Infix Function: Memungkinkan pemanggilan fungsi dengan cara yang lebih ringkas dan mirip dengan operator matematika.
+        Harus merupakan member function atau extension function, memiliki satu parameter, dan parameter tidak boleh
+        generic atau memiliki nilai default.
 */
