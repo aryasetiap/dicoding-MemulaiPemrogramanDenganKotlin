@@ -1,43 +1,77 @@
 package com.dicoding.kotlin
 
-class Animal(name: String, weight: Double, age: Int) {
-    val name: String
-    val weight: Double
-    val age: Int
-    var isMammal: Boolean
+// Contoh penggunaan visibility modifiers dalam Kotlin
 
-    init {
-        this.weight = if(weight < 0) 0.1 else weight
-        this.age = if(age < 0) 0  else age
-        this.name = name
-        this.isMammal = false
+// Public: Anggota dapat diakses dari mana saja
+class Animal {
+    var name: String = "Kucing"
+    var age: Int = 2
+    var weight: Double = 3.2
+    var isMammal: Boolean = true
+}
+
+// Private: Anggota hanya dapat diakses dalam scope yang sama
+class AnimalPrivate {
+    private var name: String = "Kucing"
+    private var age: Int = 2
+    private var weight: Double = 3.2
+    private var isMammal: Boolean = true
+
+    fun getName(): String {
+        return name
     }
 
-    constructor(name: String, weight: Double, age: Int, isMammal: Boolean) : this(name, weight, age) {
-        this.isMammal = isMammal
+    fun setName(newName: String) {
+        name = newName
     }
+}
+
+// Protected: Anggota dapat diakses oleh kelas turunannya
+open class AnimalProtected {
+    protected var weight: Double = 3.2
+}
+
+class Cat : AnimalProtected() {
+    fun printWeight() {
+        println("Berat: $weight")
+    }
+}
+
+// Internal: Anggota hanya dapat diakses dalam satu modul
+internal class AnimalInternal {
+    var name: String = "Kucing"
+    var age: Int = 2
+    var weight: Double = 3.2
+    var isMammal: Boolean = true
 }
 
 fun main() {
-    /*
-    Secondary Constructor dalam Kotlin:
+    val animal = Animal()
+    println("Nama: ${animal.name}, Umur: ${animal.age}, Berat: ${animal.weight}, Mamalia: ${animal.isMammal}")
 
-    Secondary Constructor: Digunakan untuk menginisialisasi kelas dengan cara yang berbeda. Anda dapat membuat lebih
-    dari satu secondary constructor.
+    val animalPrivate = AnimalPrivate()
+    println("Nama: ${animalPrivate.getName()}")
+    animalPrivate.setName("Kucing Oren")
+    println("Nama baru: ${animalPrivate.getName()}")
 
-    Default Constructor: Kotlin secara otomatis membuat default constructor jika tidak ada konstruktor yang dibuat
-    secara manual. Default constructor akan menginisialisasi properti dengan nilai default.
-    */
+    val cat = Cat()
+    cat.printWeight()
 
-    val dicodingCat = Animal("Dicoding Miaw", 2.5, 2, true)
-    println("Nama: ${dicodingCat.name}, Berat: ${dicodingCat.weight}, Umur: ${dicodingCat.age}, mamalia: ${dicodingCat.isMammal}")
-
-    val dicodingBird = Animal("Dicoding tweet", 0.5, 1)
-    println("Nama: ${dicodingBird.name}, Berat: ${dicodingBird.weight}, Umur: ${dicodingBird.age}, mamalia: ${dicodingBird.isMammal}")
+    val animalInternal = AnimalInternal()
+    println("Nama: ${animalInternal.name}, Umur: ${animalInternal.age}, Berat: ${animalInternal.weight}, Mamalia: ${animalInternal.isMammal}")
 }
 
 /*
-output:
-    Nama: Dicoding Miaw, Berat: 2.5, Umur: 2, mamalia: true
-    Nama: Dicoding tweet, Berat: 0.5, Umur: 1, mamalia: false
+    Visibility Modifiers dalam Kotlin:
+
+    Public: Hak akses yang paling luas. Anggota dengan modifier ini dapat diakses dari mana saja.
+
+    Private: Hak akses yang paling terbatas. Anggota hanya dapat diakses dalam scope yang sama.
+
+    Protected: Hak akses terbatas pada hirarki kelas. Anggota hanya dapat diakses oleh kelas turunannya atau kelas itu sendiri.
+
+    Internal: Hak akses terbatas pada satu modul. Anggota tidak dapat diakses di luar modulnya.
+
+    Semua modifier ini dapat digunakan untuk kelas, objek, konstruktor, fungsi, dan properti, kecuali protected yang
+    hanya bisa digunakan untuk anggota dalam kelas dan interface.
 */
