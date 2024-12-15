@@ -1,25 +1,15 @@
 package com.dicoding.kotlin
 
-// Contoh penggunaan extension functions dalam Kotlin
+// Contoh penggunaan extension properties dalam Kotlin
 
-// Extension function untuk kelas Int
-fun Int.isEven(): Boolean {
-    return this % 2 == 0
-}
-
-// Extension function untuk kelas String
-fun String.greet(): String {
-    return "Hello, $this!"
-}
+// Extension property untuk kelas String
+val String.firstChar: Char
+    get() = this[0]
 
 fun main() {
-    // Menggunakan extension function isEven()
-    val number = 10
-    println("$number is even: ${number.isEven()}")
-
-    // Menggunakan extension function greet()
+    // Menggunakan extension property firstChar
     val name = "Kotlin"
-    println(name.greet())
+    println("First character of $name is ${name.firstChar}")
 }
 
 /*
