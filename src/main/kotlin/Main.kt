@@ -1,84 +1,51 @@
 package com.dicoding.kotlin
 
-// Contoh penggunaan abstract class dalam Kotlin
+// Contoh penggunaan interface dalam Kotlin
 
-// Abstract class Animal
-abstract class Animal(val name: String, val weight: Double, val age: Int, val isCarnivore: Boolean) {
-    abstract fun makeSound()
+// Mendefinisikan interface IFly
+interface IFly {
+    val numberOfWings: Int
+    fun fly()
+}
 
-    fun eat() {
-        println("$name is eating.")
-    }
-
-    fun sleep() {
-        println("$name is sleeping.")
+// Kelas Bird mengimplementasikan interface IFly
+class Bird(override val numberOfWings: Int) : IFly {
+    override fun fly() {
+        println("Bird is flying with $numberOfWings wings.")
     }
 }
 
-// Kelas Cat yang mewarisi abstract class Animal
-class Cat(name: String, weight: Double, age: Int, isCarnivore: Boolean, val furColor: String, val numberOfFeet: Int) : Animal(name, weight, age, isCarnivore) {
-    override fun makeSound() {
-        println("$name says: Meow!")
-    }
-
-    fun playWithHuman() {
-        println("$name is playing with human.")
-    }
-}
-
-// Kelas Fish yang mewarisi abstract class Animal
-class Fish(name: String, weight: Double, age: Int, isCarnivore: Boolean, val scaleColor: String, val numberOfFin: Int) : Animal(name, weight, age, isCarnivore) {
-    override fun makeSound() {
-        println("$name says: Blub!")
-    }
-
-    fun swim() {
-        println("$name is swimming.")
-    }
-}
-
-// Kelas Snake yang mewarisi abstract class Animal
-class Snake(name: String, weight: Double, age: Int, isCarnivore: Boolean, val skinColor: String, val isToxic: Boolean) : Animal(name, weight, age, isCarnivore) {
-    override fun makeSound() {
-        println("$name says: Hiss!")
-    }
-
-    fun bite() {
-        println("$name is biting.")
+// Kelas Airplane mengimplementasikan interface IFly
+class Airplane(override val numberOfWings: Int) : IFly {
+    override fun fly() {
+        println("Airplane is flying with $numberOfWings wings.")
     }
 }
 
 fun main() {
-    val cat = Cat("Kucing", 3.2, 2, true, "Oren", 4)
-    cat.eat()
-    cat.sleep()
-    cat.makeSound()
-    cat.playWithHuman()
+    val bird = Bird(2)
+    bird.fly()
 
-    val fish = Fish("Ikan", 1.5, 1, false, "Biru", 2)
-    fish.eat()
-    fish.sleep()
-    fish.makeSound()
-    fish.swim()
-
-    val snake = Snake("Ular", 2.0, 3, true, "Hijau", true)
-    snake.eat()
-    snake.sleep()
-    snake.makeSound()
-    snake.bite()
+    val airplane = Airplane(2)
+    airplane.fly()
 }
 
 /*
-    Abstract Class dalam Kotlin:
+    Interfaces dalam Kotlin:
 
-    Konsep Abstraction: Abstraction adalah konsep di mana detail implementasi suatu objek disembunyikan dan hanya
-        menunjukkan fungsionalitas yang relevan bagi pengguna objek tersebut.
+    Konsep Interface: Interface adalah konsep yang digunakan oleh suatu kelas agar dapat memiliki sifat tertentu.
+        Interface mirip dengan abstract class, tetapi tanpa deklarasi properti dan fungsi yang dideklarasikan tanpa isi.
 
-    Abstract Class: Abstract class adalah gambaran umum dari sebuah kelas yang tidak dapat direalisasikan dalam bentuk
-        objek. Kelas ini hanya mendefinisikan nama method dan properti tanpa implementasi.
+    Implementasi Interface: Kelas yang mengimplementasikan sebuah interface harus melakukan override seluruh properti
+        dan fungsi yang terdapat pada interface tersebut.
 
-    Keyword abstract: Untuk menjadikan sebuah kelas sebagai abstract, tambahkan keyword abstract sebelum nama kelas.
+    Penamaan Interface: Penamaan interface biasanya diawali dengan huruf "I" kapital untuk membedakannya dengan kelas.
 
-    Implementasi di Child Class: Kelas turunan (child class) dari abstract class harus mengimplementasikan method dan
-        properti yang didefinisikan dalam abstract class.
+        Perbedaan dengan Abstract Class:
+
+        Abstract class bisa berisi default value, sedangkan interface tidak bisa.
+
+        Setiap member abstract class final secara default, sedangkan member interface abstract secara default.
+
+        Satu kelas hanya bisa extend satu abstract class, tetapi bisa implement lebih dari satu interface.
 */
