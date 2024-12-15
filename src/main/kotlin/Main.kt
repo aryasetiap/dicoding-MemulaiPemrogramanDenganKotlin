@@ -1,61 +1,80 @@
 package com.dicoding.kotlin
 
+import kotlin.reflect.KProperty
+
+// delegate properti string
+class DelegateName {
+    private var value: String = "Default"
+
+    operator fun getValue(classRef: Any?, property: KProperty<*>) : String {
+        println("Fungsi ini sama seperti getter untuk properti ${property.name} pada class $classRef")
+        return value
+    }
+
+    operator fun setValue(classRef: Any?, property: KProperty<*>, newValue: String){
+        println("Fungsi ini sama seperti setter untuk properti ${property.name} pada class $classRef")
+        println("Nilai ${property.name} dari: $value akan berubah menjadi $newValue")
+        value = newValue
+    }
+}
+
+class Person {
+    var name: String by DelegateName()
+}
+
+class Hero {
+    var name: String by DelegateName()
+}
+
+// delegate properti any
+class DelegateGenericClass {
+    private var value: Any = "Default"
+
+    operator fun getValue(classRef: Any, property: KProperty<*>): Any {
+        println("Fungsi ini sama seperti getter untuk properti ${property.name} pada class $classRef")
+        return value
+    }
+
+    operator fun setValue(classRef: Any, property: KProperty<*>, newValue: Any) {
+        println("Nilai ${property.name} dari: $value akan berubah menjadi $newValue")
+        value = newValue
+    }
+}
+
+class Animal {
+    var name: Any by DelegateGenericClass()
+    var weight: Any by DelegateGenericClass()
+    var age: Any by DelegateGenericClass()
+}
+
 fun main() {
     /*
-    Properti dalam Kotlin:
+    Property Delegation dalam Kotlin:
 
-    1. Properti dalam Kelas: Setiap kelas dalam Kotlin memiliki properti yang berbeda. Contoh pada kelas Animal,
-        properti yang dimiliki adalah name, weight, age, dan isMammal.
-    2. Deklarasi Properti: Properti dapat dideklarasikan sebagai nilai mutable dengan menggunakan var atau sebagai
-        nilai read-only dengan menggunakan val.
-    3. Property Accessor: Kotlin secara otomatis menghasilkan fungsi getter dan setter untuk properti mutable, dan
-        hanya fungsi getter untuk properti read-only. Fungsi getter dan setter juga dapat dibuat secara manual jika
-        diperlukan.
-    4. Override Getter dan Setter: Anda dapat menambahkan kode lain pada fungsi getter dan setter sesuai kebutuhan
-        dengan melakukan override pada fungsi tersebut.
-     */
+    1. Pengelolaan Properti: Properti kelas dapat didelegasikan kepada kelas lain untuk meminimalisir penulisan kode getter
+    dan setter yang berulang.
 
-//  Tanpa setter dan getter
-    val dicodingCat = Animal()
-    println("Nama: ${dicodingCat.name}" )
-    dicodingCat.name = "Goose"
-    println("Nama: ${dicodingCat.name}")
+    2. Kelas Delegasi: Sebelum mendelegasikan properti, buat kelas delegasi terlebih dahulu. Gunakan keyword by untuk
+    menginisialisasi properti yang didelegasikan.
 
-//    output:
-//    Nama: Dicoding Miaw
-//    Nama: Goose
+    2. Contoh Kode: Properti name dikelola melalui kelas DelegateName. Delegasi dapat digunakan oleh properti dengan tipe
+    data yang berbeda menggunakan tipe data Any.
+    */
 
-//    Dengan setter dan getter
-    val dicodingCat2 = Animal2()
-    println("Nama: ${dicodingCat2.name}" )
-    dicodingCat2.name = "Goose"
-    println("Nama: ${dicodingCat2.name}")
+    val animal = Animal()
+    animal.name = "Dicoding cat"
+    animal.weight = 6.2
+    animal.age = 1
 
-}
+    println("Nama: ${animal.name}")
+    println("Berat: ${animal.weight}")
+    println("Umur: ${animal.age} Tahun")
 
-class Animal() {
-    var name: String = "Kucing"
-    var weight: Double = 3.2
-    var age: Int = 2
-    var isMammal: Boolean = true
+    val person = Person()
+    person.name = "Dimas"
+    println("Nama Orang: ${person.name}")
 
-    fun eat(){
-        println("$name makan!")
-    }
-
-    fun sleep() {
-        println("$name tidur!")
-    }
-}
-
-class Animal2{
-    var name: String = "Dicoding Miaw"
-        get(){
-            println("Fungsi Getter terpanggil")
-            return field
-        }
-        set(value){
-            println("Fungsi Setter terpanggil")
-            field = value
-        }
+    val hero = Hero()
+    hero.name = "Gatotkaca"
+    println("Nama Pahlawan: ${hero.name}")
 }
