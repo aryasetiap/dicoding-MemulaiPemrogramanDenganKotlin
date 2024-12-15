@@ -1,77 +1,51 @@
 package com.dicoding.kotlin
 
-// Contoh penggunaan visibility modifiers dalam Kotlin
+// Contoh penggunaan overloading dalam Kotlin
 
-// Public: Anggota dapat diakses dari mana saja
 class Animal {
-    var name: String = "Kucing"
-    var age: Int = 2
-    var weight: Double = 3.2
-    var isMammal: Boolean = true
-}
-
-// Private: Anggota hanya dapat diakses dalam scope yang sama
-class AnimalPrivate {
-    private var name: String = "Kucing"
-    private var age: Int = 2
-    private var weight: Double = 3.2
-    private var isMammal: Boolean = true
-
-    fun getName(): String {
-        return name
+    // Fungsi eat() tanpa parameter
+    fun eat() {
+        println("Animal is eating.")
     }
 
-    fun setName(newName: String) {
-        name = newName
+    // Fungsi eat() dengan satu parameter
+    fun eat(typeFood: String) {
+        println("Animal is eating $typeFood.")
     }
-}
 
-// Protected: Anggota dapat diakses oleh kelas turunannya
-open class AnimalProtected {
-    protected var weight: Double = 3.2
-}
-
-class Cat : AnimalProtected() {
-    fun printWeight() {
-        println("Berat: $weight")
+    // Fungsi eat() dengan dua parameter
+    fun eat(typeFood: String, quantity: Int) {
+        println("Animal is eating $quantity of $typeFood.")
     }
-}
-
-// Internal: Anggota hanya dapat diakses dalam satu modul
-internal class AnimalInternal {
-    var name: String = "Kucing"
-    var age: Int = 2
-    var weight: Double = 3.2
-    var isMammal: Boolean = true
 }
 
 fun main() {
     val animal = Animal()
-    println("Nama: ${animal.name}, Umur: ${animal.age}, Berat: ${animal.weight}, Mamalia: ${animal.isMammal}")
 
-    val animalPrivate = AnimalPrivate()
-    println("Nama: ${animalPrivate.getName()}")
-    animalPrivate.setName("Kucing Oren")
-    println("Nama baru: ${animalPrivate.getName()}")
+    // Memanggil fungsi eat() tanpa parameter
+    animal.eat()
 
-    val cat = Cat()
-    cat.printWeight()
+    // Memanggil fungsi eat() dengan satu parameter
+    animal.eat("meat")
 
-    val animalInternal = AnimalInternal()
-    println("Nama: ${animalInternal.name}, Umur: ${animalInternal.age}, Berat: ${animalInternal.weight}, Mamalia: ${animalInternal.isMammal}")
+    // Memanggil fungsi eat() dengan dua parameter
+    animal.eat("meat", 5)
 }
 
 /*
-    Visibility Modifiers dalam Kotlin:
+    Overloading dalam Kotlin:
 
-    Public: Hak akses yang paling luas. Anggota dengan modifier ini dapat diakses dari mana saja.
+    Polymorphism: Polymorphism adalah kemampuan objek, variabel, atau fungsi untuk memiliki berbagai bentuk. Contohnya
+        adalah smartphone yang dapat digunakan sebagai kamera, pemutar musik, dan radio.
 
-    Private: Hak akses yang paling terbatas. Anggota hanya dapat diakses dalam scope yang sama.
+    Overloading: Overloading adalah kondisi di mana kita bisa membuat dua atau lebih fungsi dengan jumlah, tipe, atau
+        urutan parameter yang berbeda dalam sebuah kelas. Ini memungkinkan fungsi dengan nama yang sama untuk melakukan
+        hal yang berbeda berdasarkan parameter yang diberikan.
 
-    Protected: Hak akses terbatas pada hirarki kelas. Anggota hanya dapat diakses oleh kelas turunannya atau kelas itu sendiri.
+    Contoh Overloading: Pada kelas Animal, terdapat beberapa fungsi eat() dengan parameter yang berbeda. Fungsi pertama
+        tidak memiliki parameter, fungsi kedua memiliki satu parameter typeFood, dan fungsi ketiga memiliki dua parameter
+        typeFood dan quantity.
 
-    Internal: Hak akses terbatas pada satu modul. Anggota tidak dapat diakses di luar modulnya.
-
-    Semua modifier ini dapat digunakan untuk kelas, objek, konstruktor, fungsi, dan properti, kecuali protected yang
-    hanya bisa digunakan untuk anggota dalam kelas dan interface.
+    Pentingnya Overloading: Overloading adalah fitur yang sangat powerful dalam pemrograman. Contoh lainnya adalah
+        kelas Calculator yang memiliki fungsi matematika dengan overloading pada fungsi add().
 */
