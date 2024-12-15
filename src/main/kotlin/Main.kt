@@ -1,9 +1,11 @@
 package com.dicoding.kotlin
 
-// Contoh penggunaan inheritance dalam Kotlin
+// Contoh penggunaan abstract class dalam Kotlin
 
-// Kelas Animal sebagai parent class
-open class Animal(val name: String, val weight: Double, val age: Int, val isCarnivore: Boolean) {
+// Abstract class Animal
+abstract class Animal(val name: String, val weight: Double, val age: Int, val isCarnivore: Boolean) {
+    abstract fun makeSound()
+
     fun eat() {
         println("$name is eating.")
     }
@@ -13,22 +15,34 @@ open class Animal(val name: String, val weight: Double, val age: Int, val isCarn
     }
 }
 
-// Kelas Cat sebagai child class yang mewarisi kelas Animal
+// Kelas Cat yang mewarisi abstract class Animal
 class Cat(name: String, weight: Double, age: Int, isCarnivore: Boolean, val furColor: String, val numberOfFeet: Int) : Animal(name, weight, age, isCarnivore) {
+    override fun makeSound() {
+        println("$name says: Meow!")
+    }
+
     fun playWithHuman() {
         println("$name is playing with human.")
     }
 }
 
-// Kelas Fish sebagai child class yang mewarisi kelas Animal
+// Kelas Fish yang mewarisi abstract class Animal
 class Fish(name: String, weight: Double, age: Int, isCarnivore: Boolean, val scaleColor: String, val numberOfFin: Int) : Animal(name, weight, age, isCarnivore) {
+    override fun makeSound() {
+        println("$name says: Blub!")
+    }
+
     fun swim() {
         println("$name is swimming.")
     }
 }
 
-// Kelas Snake sebagai child class yang mewarisi kelas Animal
+// Kelas Snake yang mewarisi abstract class Animal
 class Snake(name: String, weight: Double, age: Int, isCarnivore: Boolean, val skinColor: String, val isToxic: Boolean) : Animal(name, weight, age, isCarnivore) {
+    override fun makeSound() {
+        println("$name says: Hiss!")
+    }
+
     fun bite() {
         println("$name is biting.")
     }
@@ -38,35 +52,33 @@ fun main() {
     val cat = Cat("Kucing", 3.2, 2, true, "Oren", 4)
     cat.eat()
     cat.sleep()
+    cat.makeSound()
     cat.playWithHuman()
 
     val fish = Fish("Ikan", 1.5, 1, false, "Biru", 2)
     fish.eat()
     fish.sleep()
+    fish.makeSound()
     fish.swim()
 
     val snake = Snake("Ular", 2.0, 3, true, "Hijau", true)
     snake.eat()
     snake.sleep()
+    snake.makeSound()
     snake.bite()
 }
 
 /*
-    Inheritance dalam Kotlin:
+    Abstract Class dalam Kotlin:
 
-    Konsep Inheritance: Inheritance atau pewarisan adalah salah satu pilar dari OOP yang memungkinkan kelas untuk
-        mewarisi properti dan fungsi dari kelas lain. Ini membantu mengurangi duplikasi kode.
+    Konsep Abstraction: Abstraction adalah konsep di mana detail implementasi suatu objek disembunyikan dan hanya
+        menunjukkan fungsionalitas yang relevan bagi pengguna objek tersebut.
 
-    Parent dan Child Class: Kelas yang mewariskan properti dan fungsi disebut parent class atau super class, sedangkan
-        kelas yang menerima pewarisan disebut child class atau sub class.
+    Abstract Class: Abstract class adalah gambaran umum dari sebuah kelas yang tidak dapat direalisasikan dalam bentuk
+        objek. Kelas ini hanya mendefinisikan nama method dan properti tanpa implementasi.
 
-    Contoh Kelas: Kelas Animal sebagai parent class memiliki properti seperti name, weight, age, dan isCarnivore, serta
-        fungsi eat() dan sleep(). Kelas Cat, Fish, dan Snake sebagai child class mewarisi properti dan fungsi dari
-        Animal dan menambahkan properti serta fungsi spesifik mereka sendiri.
+    Keyword abstract: Untuk menjadikan sebuah kelas sebagai abstract, tambahkan keyword abstract sebelum nama kelas.
 
-    Keyword open dan override: Kelas di Kotlin secara default bersifat final. Untuk memungkinkan pewarisan, kelas harus
-        dideklarasikan dengan keyword open. Fungsi yang diambil alih oleh child class menggunakan keyword override.
-
-    Polymorphism: Overriding adalah bagian dari konsep polymorphism, di mana fungsi dengan nama yang sama dapat memiliki
-        perilaku yang berbeda berdasarkan objek yang memanggilnya.
+    Implementasi di Child Class: Kelas turunan (child class) dari abstract class harus mengimplementasikan method dan
+        properti yang didefinisikan dalam abstract class.
 */
