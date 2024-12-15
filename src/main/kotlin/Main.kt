@@ -2,45 +2,60 @@ package com.dicoding.kotlin
 
 fun main() {
     /*
-    Membuat kelas dalam Kotlin:
+    Properti dalam Kotlin:
 
-    1. Mendefinisikan Kelas: Gunakan kata kunci class diikuti dengan nama kelas yang akan dibuat.
-    2. Menambahkan Properti dan Metode: Kelas dapat memiliki properti dan metode. Contoh kelas Animal memiliki 4
-        properti dan 2 metode.
-    3. Membuat Objek: Gunakan val atau var diikuti dengan nama objek, lalu inisialisasi objek dengan memanggil nama
-        kelas dan menambahkan nilai properti yang dibutuhkan pada constructor utama.
-    4. Contoh Kode: Kode lengkap dengan fungsi cetak untuk melihat nilai properti dalam objeknya. Contoh output:
-        Nama: Kucing, Berat: 3.2, Umur: 2, mamalia: true
-        Kucing makan! Kucing tidur!
-        Nama: Kucing Oren, Berat: 6.0, Umur: 3, mamalia: true
-        Kucing Oren makan! Kucing Oren tidur!
+    1. Properti dalam Kelas: Setiap kelas dalam Kotlin memiliki properti yang berbeda. Contoh pada kelas Animal,
+        properti yang dimiliki adalah name, weight, age, dan isMammal.
+    2. Deklarasi Properti: Properti dapat dideklarasikan sebagai nilai mutable dengan menggunakan var atau sebagai
+        nilai read-only dengan menggunakan val.
+    3. Property Accessor: Kotlin secara otomatis menghasilkan fungsi getter dan setter untuk properti mutable, dan
+        hanya fungsi getter untuk properti read-only. Fungsi getter dan setter juga dapat dibuat secara manual jika
+        diperlukan.
+    4. Override Getter dan Setter: Anda dapat menambahkan kode lain pada fungsi getter dan setter sesuai kebutuhan
+        dengan melakukan override pada fungsi tersebut.
      */
 
-    class Animal() {
-        var name: String = "Kucing"
-        var weight: Double = 3.2
-        var age: Int = 2
-        var isMammal: Boolean = true
+//  Tanpa setter dan getter
+    val dicodingCat = Animal()
+    println("Nama: ${dicodingCat.name}" )
+    dicodingCat.name = "Goose"
+    println("Nama: ${dicodingCat.name}")
 
-        fun eat(){
-            println("$name makan!")
-        }
+//    output:
+//    Nama: Dicoding Miaw
+//    Nama: Goose
 
-        fun sleep() {
-            println("$name tidur!")
-        }
+//    Dengan setter dan getter
+    val dicodingCat2 = Animal2()
+    println("Nama: ${dicodingCat2.name}" )
+    dicodingCat2.name = "Goose"
+    println("Nama: ${dicodingCat2.name}")
+
+}
+
+class Animal() {
+    var name: String = "Kucing"
+    var weight: Double = 3.2
+    var age: Int = 2
+    var isMammal: Boolean = true
+
+    fun eat(){
+        println("$name makan!")
     }
 
-    val dicodingCat = Animal()
-    println("Nama: ${dicodingCat.name}, Berat: ${dicodingCat.weight}, Umur: ${dicodingCat.age}, mamalia: ${dicodingCat.isMammal}" )
-    dicodingCat.eat()
-    dicodingCat.sleep()
+    fun sleep() {
+        println("$name tidur!")
+    }
+}
 
-    // Mengubah objek dari class dicodingCat
-    dicodingCat.name = "Kucing Oren"
-    dicodingCat.weight = 6.0
-    dicodingCat.age = 3
-    println("Nama: ${dicodingCat.name}, Berat: ${dicodingCat.weight}, Umur: ${dicodingCat.age}, mamalia: ${dicodingCat.isMammal}" )
-    dicodingCat.eat()
-    dicodingCat.sleep()
+class Animal2{
+    var name: String = "Dicoding Miaw"
+        get(){
+            println("Fungsi Getter terpanggil")
+            return field
+        }
+        set(value){
+            println("Fungsi Setter terpanggil")
+            field = value
+        }
 }
