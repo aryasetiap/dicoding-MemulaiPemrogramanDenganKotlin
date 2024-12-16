@@ -1,35 +1,41 @@
 package com.dicoding.kotlin
 
-// Contoh penggunaan nullable receiver dalam Kotlin
-
-// Extension function dengan nullable receiver type
-fun String?.printLength() {
-    if (this != null) {
-        println("Panjang string: ${this.length}")
-    } else {
-        println("String ini null")
-    }
-}
+// Mengimpor package kotlin.random untuk menggunakan kelas Random
+import kotlin.random.Random
+// Menggunakan alias untuk menghindari ambiguitas
+import kotlin.math.PI as kotlinPI
+import java.lang.Math.PI as javaPI
+// Mengimpor beberapa fungsi dan variabel dari package kotlin.math
+import kotlin.math.*
 
 fun main() {
-    val text: String? = null
-    text.printLength() // Output: String ini null
+    // Menggunakan kelas Random untuk menghasilkan angka acak
+    val randomNumber = Random.nextInt(0, 100)
+    println("Angka acak: $randomNumber")
 
-    val text2: String? = "Kotlin"
-    text2.printLength() // Output: Panjang string: 6
+    val number = 16.0
+    println("Akar kuadrat dari $number adalah ${sqrt(number)}")
+    println("Nilai PI adalah $kotlinPI")
+
+    println("Nilai PI dari kotlin.math adalah $kotlinPI")
+    println("Nilai PI dari java.lang.Math adalah $javaPI")
 }
 
 /*
-    Nullable Receiver dalam Kotlin:
+    Import dan Packages dalam Kotlin:
 
-    Nullable Receiver: Kotlin memungkinkan kita untuk mendeklarasikan extension dengan nullable receiver type. Ini berarti
-        extension tersebut bisa dipanggil pada objek yang nilainya null.
+    Pengelompokan Konten: Semua konten dalam Kotlin, seperti kelas dan fungsi, dibungkus dalam sebuah package untuk
+        mengelompokkan kelas, fungsi, dan variabel yang memiliki kemiripan fungsionalitas.
 
-    If Expression: Digunakan untuk memeriksa apakah receiver object bernilai null. Jika tidak, receiver object akan
-        secara otomatis di-casting menjadi tipe non-null.
+    Mengimpor Package: Untuk menggunakan kelas, fungsi, atau variabel dari suatu package, kita harus mengimpor package
+        tersebut menggunakan keyword import diikuti dengan alamat spesifiknya.
 
-    Elvis Operator: Alternatif lain untuk memeriksa nullability adalah dengan menggunakan elvis operator (?:).
+    Efisiensi Penulisan Kode: Dengan mengimpor package, kita tidak perlu menuliskan alamat package secara lengkap setiap
+        kali menggunakan kelas atau fungsi dari package tersebut, sehingga penulisan kode menjadi lebih efisien.
 
-    Penggunaan: Nullable receiver berguna ketika kita memiliki objek yang mungkin bernilai null, sehingga kita tidak
-        perlu menggunakan operator safe call (?.) setiap kali memanggil extension tersebut.
+    Alias: Kita dapat menggunakan alias dengan keyword as untuk menghindari ambiguitas ketika ada kelas, fungsi, atau
+        variabel dengan nama yang sama tetapi berada di package yang berbeda.
+
+    Mengimpor Seluruh Konten: Kita dapat mengimpor seluruh kelas, fungsi, dan variabel dari suatu package dengan menggunakan
+        tanda * pada akhir package tersebut.
 */
