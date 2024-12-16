@@ -9,6 +9,8 @@ fun main() {
         println("Hasil: $result")
     } catch (e: ArithmeticException) {
         println("Terjadi kesalahan: ${e.message}")
+    } finally {
+        println("Blok finally selalu dieksekusi.")
     }
 
     try {
@@ -17,6 +19,8 @@ fun main() {
         println("Angka: $number")
     } catch (e: NumberFormatException) {
         println("Terjadi kesalahan: ${e.message}")
+    } finally {
+        println("Blok finally selalu dieksekusi.")
     }
 
     try {
@@ -25,22 +29,21 @@ fun main() {
         println("Panjang teks: ${text!!.length}")
     } catch (e: NullPointerException) {
         println("Terjadi kesalahan: ${e.message}")
+    } finally {
+        println("Blok finally selalu dieksekusi.")
     }
 }
 
 /*
-    Exception dalam Kotlin:
+    Exception Handling dalam Kotlin:
 
-    Pengertian Exception: Exception adalah kejadian yang dapat mengacaukan jalannya suatu program. Pada Kotlin, semua
-        exception bersifat unchecked, yang berarti exception terjadi karena kesalahan pada kode kita.
+    try-catch: Salah satu cara untuk menangani exception adalah dengan menggunakan blok try-catch. Kode yang dapat
+        menyebabkan exception ditempatkan dalam blok try, dan jika exception terjadi, blok catch akan menangani
+        exception tersebut.
 
-    Jenis-Jenis Exception: Beberapa contoh unchecked exception yang sering mengganggu jalannya program adalah:
+    try-catch-finally: Selain blok try dan catch, ada juga blok finally yang bersifat opsional. Blok finally akan
+        dieksekusi setelah program keluar dari blok try atau catch, bahkan jika terjadi exception yang tidak terduga.
 
-        ArithmeticException: Terjadi karena pembagian bilangan dengan nilai nol.
-
-        NumberFormatException: Disebabkan oleh kesalahan dalam format angka, misalnya mengubah nilai String yang tidak
-            memiliki format angka yang benar menjadi Integer.
-
-        NullPointerException (NPE): Terjadi karena sebuah variabel atau objek memiliki nilai null, padahal seharusnya
-            tidak boleh null.
+    Multiple Catch: Kita dapat menggunakan multiple catch untuk menangani lebih dari satu tipe exception. Setiap blok
+        catch dapat menangani tipe exception yang berbeda, memungkinkan penanganan yang lebih spesifik untuk setiap jenis exception.
 */
