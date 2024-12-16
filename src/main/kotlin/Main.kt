@@ -1,31 +1,35 @@
 package com.dicoding.kotlin
 
-// Contoh penggunaan extension properties dalam Kotlin
+// Contoh penggunaan nullable receiver dalam Kotlin
 
-// Extension property untuk kelas String
-val String.firstChar: Char
-    get() = this[0]
+// Extension function dengan nullable receiver type
+fun String?.printLength() {
+    if (this != null) {
+        println("Panjang string: ${this.length}")
+    } else {
+        println("String ini null")
+    }
+}
 
 fun main() {
-    // Menggunakan extension property firstChar
-    val name = "Kotlin"
-    println("First character of $name is ${name.firstChar}")
+    val text: String? = null
+    text.printLength() // Output: String ini null
+
+    val text2: String? = "Kotlin"
+    text2.printLength() // Output: Panjang string: 6
 }
 
 /*
-    Extensions dalam Kotlin:
+    Nullable Receiver dalam Kotlin:
 
-    Extensions: Kotlin memungkinkan kita untuk menambahkan fungsi baru pada sebuah kelas tanpa harus mewarisi kelas
-        tersebut melalui deklarasi khusus yang disebut Extensions.
+    Nullable Receiver: Kotlin memungkinkan kita untuk mendeklarasikan extension dengan nullable receiver type. Ini berarti
+        extension tersebut bisa dipanggil pada objek yang nilainya null.
 
-    Extension Functions: Digunakan untuk menambahkan fungsi baru pada kelas. Deklarasinya melibatkan receiver type dan
-        nama fungsi yang dipisahkan oleh titik (.). Contoh: fun Int.isEven(): Boolean { return this % 2 == 0 }.
+    If Expression: Digunakan untuk memeriksa apakah receiver object bernilai null. Jika tidak, receiver object akan
+        secara otomatis di-casting menjadi tipe non-null.
 
-    Extension Properties: Digunakan untuk menambahkan properti baru pada kelas tanpa menyentuh kode di dalam kelas
-        tersebut. Deklarasinya mirip dengan extension functions, tetapi harus menyediakan getter atau setter secara
-        eksplisit. Contoh: val String.firstChar: Char get() = this[0].
+    Elvis Operator: Alternatif lain untuk memeriksa nullability adalah dengan menggunakan elvis operator (?:).
 
-    Infix Function: Memungkinkan pemanggilan fungsi dengan cara yang lebih ringkas dan mirip dengan operator matematika.
-        Harus merupakan member function atau extension function, memiliki satu parameter, dan parameter tidak boleh
-        generic atau memiliki nilai default.
+    Penggunaan: Nullable receiver berguna ketika kita memiliki objek yang mungkin bernilai null, sehingga kita tidak
+        perlu menggunakan operator safe call (?.) setiap kali memanggil extension tersebut.
 */
