@@ -1,35 +1,46 @@
 package com.dicoding.kotlin
 
-// Mengimpor package com.dicoding.oop.utils
-import com.dicoding.kotlin.utils.*
+// Contoh penggunaan exception handling dalam Kotlin
 
 fun main() {
-    // Memanggil fungsi sayHello() dari package com.dicoding.oop.utils
-    sayHello()
+    try {
+        // Contoh ArithmeticException
+        val result = 10 / 0
+        println("Hasil: $result")
+    } catch (e: ArithmeticException) {
+        println("Terjadi kesalahan: ${e.message}")
+    }
 
-    // Menggunakan fungsi areaOfCircle() dari package com.dicoding.oop.utils
-    val radius = 5.0
-    println("Luas lingkaran dengan radius $radius adalah ${areaOfCircle(radius)}")
+    try {
+        // Contoh NumberFormatException
+        val number = "abc".toInt()
+        println("Angka: $number")
+    } catch (e: NumberFormatException) {
+        println("Terjadi kesalahan: ${e.message}")
+    }
 
-    // Menggunakan variabel PI dari package com.dicoding.oop.utils
-    println("Nilai PI adalah $PI")
+    try {
+        // Contoh NullPointerException
+        val text: String? = null
+        println("Panjang teks: ${text!!.length}")
+    } catch (e: NullPointerException) {
+        println("Terjadi kesalahan: ${e.message}")
+    }
 }
 
 /*
-    Membuat Package Baru dalam Kotlin:
+    Exception dalam Kotlin:
 
-    Pengertian Package: Package adalah pembungkus dari kelas, fungsi, atau variabel yang memiliki fungsionalitas serupa.
-        Package membantu mengelompokkan dan mengorganisir kode.
+    Pengertian Exception: Exception adalah kejadian yang dapat mengacaukan jalannya suatu program. Pada Kotlin, semua
+        exception bersifat unchecked, yang berarti exception terjadi karena kesalahan pada kode kita.
 
-    Penamaan Package: Idealnya, package dituliskan dengan awalan nama domain perusahaan yang dibalik, diikuti dengan
-        nama package yang akan digunakan. Contoh: com.dicoding.oop.utils.
+    Jenis-Jenis Exception: Beberapa contoh unchecked exception yang sering mengganggu jalannya program adalah:
 
-    Membuat Package: Untuk membuat package, buat folder package pada berkas proyek. Di IntelliJ IDEA, klik kanan pada
-        folder src, pilih New > Package, dan ketikkan nama package.
+        ArithmeticException: Terjadi karena pembagian bilangan dengan nilai nol.
 
-    Menambahkan Berkas ke Package: Setelah membuat package, tambahkan berkas Kotlin ke dalam package tersebut. Misalnya,
-        buat berkas MyMath.kt dan tambahkan fungsi atau variabel yang diperlukan.
+        NumberFormatException: Disebabkan oleh kesalahan dalam format angka, misalnya mengubah nilai String yang tidak
+            memiliki format angka yang benar menjadi Integer.
 
-    Mengimpor Package: Untuk menggunakan fungsi atau variabel dari package, impor package tersebut menggunakan keyword
-        import. Anda bisa mengimpor seluruh fungsi dan variabel dalam package dengan menggunakan tanda bintang (*).
+        NullPointerException (NPE): Terjadi karena sebuah variabel atau objek memiliki nilai null, padahal seharusnya
+            tidak boleh null.
 */
