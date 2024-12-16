@@ -1,41 +1,35 @@
 package com.dicoding.kotlin
 
-// Mengimpor package kotlin.random untuk menggunakan kelas Random
-import kotlin.random.Random
-// Menggunakan alias untuk menghindari ambiguitas
-import kotlin.math.PI as kotlinPI
-import java.lang.Math.PI as javaPI
-// Mengimpor beberapa fungsi dan variabel dari package kotlin.math
-import kotlin.math.*
+// Mengimpor package com.dicoding.oop.utils
+import com.dicoding.kotlin.utils.*
 
 fun main() {
-    // Menggunakan kelas Random untuk menghasilkan angka acak
-    val randomNumber = Random.nextInt(0, 100)
-    println("Angka acak: $randomNumber")
+    // Memanggil fungsi sayHello() dari package com.dicoding.oop.utils
+    sayHello()
 
-    val number = 16.0
-    println("Akar kuadrat dari $number adalah ${sqrt(number)}")
-    println("Nilai PI adalah $kotlinPI")
+    // Menggunakan fungsi areaOfCircle() dari package com.dicoding.oop.utils
+    val radius = 5.0
+    println("Luas lingkaran dengan radius $radius adalah ${areaOfCircle(radius)}")
 
-    println("Nilai PI dari kotlin.math adalah $kotlinPI")
-    println("Nilai PI dari java.lang.Math adalah $javaPI")
+    // Menggunakan variabel PI dari package com.dicoding.oop.utils
+    println("Nilai PI adalah $PI")
 }
 
 /*
-    Import dan Packages dalam Kotlin:
+    Membuat Package Baru dalam Kotlin:
 
-    Pengelompokan Konten: Semua konten dalam Kotlin, seperti kelas dan fungsi, dibungkus dalam sebuah package untuk
-        mengelompokkan kelas, fungsi, dan variabel yang memiliki kemiripan fungsionalitas.
+    Pengertian Package: Package adalah pembungkus dari kelas, fungsi, atau variabel yang memiliki fungsionalitas serupa.
+        Package membantu mengelompokkan dan mengorganisir kode.
 
-    Mengimpor Package: Untuk menggunakan kelas, fungsi, atau variabel dari suatu package, kita harus mengimpor package
-        tersebut menggunakan keyword import diikuti dengan alamat spesifiknya.
+    Penamaan Package: Idealnya, package dituliskan dengan awalan nama domain perusahaan yang dibalik, diikuti dengan
+        nama package yang akan digunakan. Contoh: com.dicoding.oop.utils.
 
-    Efisiensi Penulisan Kode: Dengan mengimpor package, kita tidak perlu menuliskan alamat package secara lengkap setiap
-        kali menggunakan kelas atau fungsi dari package tersebut, sehingga penulisan kode menjadi lebih efisien.
+    Membuat Package: Untuk membuat package, buat folder package pada berkas proyek. Di IntelliJ IDEA, klik kanan pada
+        folder src, pilih New > Package, dan ketikkan nama package.
 
-    Alias: Kita dapat menggunakan alias dengan keyword as untuk menghindari ambiguitas ketika ada kelas, fungsi, atau
-        variabel dengan nama yang sama tetapi berada di package yang berbeda.
+    Menambahkan Berkas ke Package: Setelah membuat package, tambahkan berkas Kotlin ke dalam package tersebut. Misalnya,
+        buat berkas MyMath.kt dan tambahkan fungsi atau variabel yang diperlukan.
 
-    Mengimpor Seluruh Konten: Kita dapat mengimpor seluruh kelas, fungsi, dan variabel dari suatu package dengan menggunakan
-        tanda * pada akhir package tersebut.
+    Mengimpor Package: Untuk menggunakan fungsi atau variabel dari package, impor package tersebut menggunakan keyword
+        import. Anda bisa mengimpor seluruh fungsi dan variabel dalam package dengan menggunakan tanda bintang (*).
 */
